@@ -1,4 +1,4 @@
-package main
+package s3
 
 import (
 	"log"
@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 )
 
-func main() {
+func DownloadFromS3() {
 	// sessionの作成(Mustはエラーが発生した場合にパニックを起こす)
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		// 設定や認証情報の集まり

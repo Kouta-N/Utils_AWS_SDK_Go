@@ -32,8 +32,8 @@ func UploadToS3(f *multipart.FileHeader, path string) (string, string) {
 	_, err = file.Read(buff)
 	helpers.CheckAndPrintErr(err, "Failed to read file")
 
-	fileType := http.DetectContentType(buff)
-	file.Seek(0, io.SeekStart)
+	fileType := http.DetectContentType(buff) // 与えられたデータのContent-Typeを決定する。最大でデータの最初の512バイトを引数にする。
+	file.Seek(0, io.SeekStart) // 自動でfileの先頭には戻らないのでここで戻す
 
 	directory := path + uuid.NewRandom().String() + "/"
 	var fileName string
